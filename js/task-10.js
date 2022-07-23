@@ -12,7 +12,6 @@ const parentDiv = document.querySelector(`#boxes`);
 const createBtn = document.querySelector(`[data-create]`);
 const destroyBtn = document.querySelector(`[data-destroy]`);
 
-// inputForm.addEventListener(`input`, onInputChanges);
 createBtn.addEventListener(`click`, onInputChanges);
 destroyBtn.addEventListener(`click`, onDestroyElements)
 
@@ -23,44 +22,21 @@ function onInputChanges (){
 };
 
 function createBoxes (amount){
-    let arr =[];
-    for (let i =1; i<=amount; i++){
-        arr.push(i);
-    }
-    
-    const newDiv = arr.map(function (){
-        const el=document.createElement(`div`);
-        return el;
-    
-    });
-
-    let style = {
-        width: 30,
-        height:30,
-    };
-
-
-    for (let i=0; i<arr.length; i++){
-        let element = newDiv[i];
-        element.style.width=style.width+10*i+`px`;
-        element.style.height=style.height+10*i+`px`;
+    const newDiv = [];
+    for(let i = 0; i < amount; i++){
+        let element = document.createElement(`div`);
+        element.style.width = 30 +10*i + `px`;
+        element.style.height = 30 +10*i + `px`;
         element.style.setProperty(`background-color`, getRandomHexColor());
-
+        newDiv.push(element);
     }
-
 
     parentDiv.append(...newDiv);
-
-
 }
 
 function onDestroyElements (){
     parentDiv.innerHTML = '';
-
 }
-
-
-
 
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
