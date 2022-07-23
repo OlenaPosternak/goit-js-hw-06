@@ -8,7 +8,13 @@
 
 
 const inputForm = document.querySelector(`input`);
-inputForm.addEventListener(`input`, onInputChanges);
+const parentDiv = document.querySelector(`#boxes`);
+const createBtn = document.querySelector(`[data-create]`);
+const destroyBtn = document.querySelector(`[data-destroy]`);
+
+// inputForm.addEventListener(`input`, onInputChanges);
+createBtn.addEventListener(`click`, onInputChanges);
+destroyBtn.addEventListener(`click`, onDestroyElements)
 
 
 function onInputChanges (){
@@ -16,12 +22,42 @@ function onInputChanges (){
     createBoxes(newValue);
 };
 
-
 function createBoxes (amount){
-    console.log (amount);
+    let arr =[];
+    for (let i =1; i<=amount; i++){
+        arr.push(i);
+    }
+    
+    const newDiv = arr.map(function (){
+        const el=document.createElement(`div`);
+        return el;
+    
+    });
+
+    let style = {
+        width: 30,
+        height:30,
+    };
+
+
+    for (let i=0; i<arr.length; i++){
+        let element = newDiv[i];
+        element.style.width=style.width+10*i+`px`;
+        element.style.height=style.height+10*i+`px`;
+        element.style.setProperty(`background-color`, getRandomHexColor());
+
+    }
+
+
+    parentDiv.append(...newDiv);
+
+
 }
 
-console.log(createBoxes());
+function onDestroyElements (){
+    parentDiv.innerHTML = '';
+
+}
 
 
 
