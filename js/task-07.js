@@ -6,7 +6,7 @@ const inputForm = document.querySelector(`#font-size-control`);
 const textSpan = document.querySelector(`#text`);
 
 
-inputForm.addEventListener(`change`, onInputChanges);
+inputForm.addEventListener(`input`, onInputChanges);
 
 function onInputChanges(){
 

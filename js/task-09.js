@@ -8,11 +8,10 @@ const colorInfo = document.querySelector(`.color`);
 
 changeColorBtn.addEventListener(`click`, changeColor);
 
-function changeColor(event){
-    // textSpan.style.setProperty(`font-size`, inputForm.value+`px`)
-    bodyEl.style.setProperty(`background-color`, getRandomHexColor());
-    colorInfo.textContent = getRandomHexColor();
- 
+function changeColor(){
+    let color = getRandomHexColor();
+    bodyEl.style.setProperty(`background-color`, color);
+    colorInfo.textContent = color;
 
 };
 
